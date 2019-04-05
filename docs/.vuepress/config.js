@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'Hello VuePress',
-  description: 'Just playing around',
+  title: '沐圣阁',
+  description: '沐圣的博客站',
   head: [
     ['link', { rel: 'icon', href: `/favicon.ico` }],
   ],
