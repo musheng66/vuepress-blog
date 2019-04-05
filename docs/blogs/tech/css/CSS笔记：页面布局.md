@@ -1,0 +1,121 @@
+---
+title: CSS笔记：页面布局
+date: 2018-01-29 16:14:55
+tags: CSS
+---
+近期正在看慕课网的一套前端课程，其主要内容对 Web 前端的技术基础进行梳理讲解，现将学习笔记写在这里，以备查阅。
+
+本篇主要内容为 CSS 页面布局。重点在几种布局方法及其适应性。
+<!--more-->
+## 一个问题
+
+慕课网的课程对于页面布局的讲解主要基于一个常见的 CSS 布局问题：对一个已知高度的页面区域进行三栏布局，其中左侧和右侧宽度固定，中间部分自适应：
+
+<div style="overflow: hidden; text-align: center; line-height: 150px; border: 2px solid; border-radius: 5px;"><div style="float: left; width: 100px; background: #ffc4c4;">左</div><div style="float: right; width: 100px; background: #ffffbc;">右</div><div style="background: #c9ceff;">中</div></div>
+
+## 几种方法
+
+对于这样的问题肯定不止一种方法可以实现，这里就将目前的五种布局方式记录一下。
+
+### float
+这种布局方式可能是我们最熟悉的，浮动之后的元素不能算是完全脱离文档流，但也不会在其父元素中展现高度，其父元素中的其他元素会无视它（因此父元素高度以非浮动子元素计算），但其他元素中的文本会**为其腾出位置**。因此在这个问题中，左侧和右侧浮动之后会显示在左右两端，中间部分的内容其实仍然占满一行，只不过左侧和右侧被遮挡了（中间部分的内容不会被遮挡）。
+
+#### 代码
+```html
+<div>
+  <div style="float: left; height: 150px; width: 100px; background: #ffc4c4;">左</div>
+  <div style="float: right; height: 150px; width: 100px; background: #ffffbc;">右</div>
+  <div style="height: 150px; background: #c9ceff;">中</div>
+</div>
+```
+
+#### 效果
+<div><div style="float: left; height: 150px; width: 100px; background: #ffc4c4;">左</div><div style="float: right; height: 150px; width: 100px; background: #ffffbc;">右</div><div style="height: 150px; background: #c9ceff;">中</div></div>
+
+**注意**：此方法适用于高度确定的区域布局，若高度要求自适应，浮动方法很难使三栏的高度一致。
+
+
+### absolute
+绝对定位会使元素完全脱离文档流，且会使其默认带上 `display: block;` 样式，其父元素中的其他元素会**完全忽视其存在，文本内容也不会为其腾出位置**。因此在这个问题中，我们需要为中间的部分设定与左右两侧的距离，这样在将左右两侧进行绝对定位后，中间的文字才不会被遮挡。
+
+#### 代码
+```html
+<div>
+  <div style="position: absolute; left: 0; height: 150px; width: 100px; background: #ffc4c4;">左</div>
+  <div style="position: absolute; right: 0; height: 150px; width: 100px; background: #ffffbc;">右</div>
+  <div style="padding: 0 100px; height: 150px; background: #c9ceff;">中</div>
+</div>
+```
+
+#### 效果
+<div style="width: 100%; position: relative;"><div style="position: absolute; left: 0; height: 150px; width: 100px; background: #ffc4c4;">左</div><div style="position: absolute; right: 0; height: 150px; width: 100px; background: #ffffbc;">右</div><div style="padding: 0 100px; height: 150px; background: #c9ceff;">中</div></div>
+
+**注意**：此方法仍然只适合高度已知的布局需求。
+
+### flex
+在此前的《浅谈响应式开发》中我已对 flex 布局进行过简介，弹性布局可以为盒模型提供最大的灵活性，不需要考虑像浮动或绝对定位脱离文档流产生的问题，目前的各大主流浏览器也已逐步兼容，是适配移动开发的布局方案。在这个布局问题中，我们只需要设置一下父元素属性和子元素宽度即可。另外 `flex: 1` 是中间自适应所必须的样式。
+
+#### 代码
+```html
+<div style="display: flex;">
+  <div style="width: 100px; background: #ffc4c4;">左</div>
+  <div style="flex: 1; height: 150px; background: #c9ceff;">中</div>
+  <div style="width: 100px; background: #ffffbc;">右</div>
+</div>
+```
+
+#### 效果
+<div style="display: flex;"><div style="width: 100px; background: #ffc4c4;">左</div><div style="flex: 1; height: 150px; background: #c9ceff;">中</div><div style="width: 100px; background: #ffffbc;">右</div></div>
+
+**注意**：此方法可以自适应高度，所以对于高度未知的布局需求同样可以满足。另外，对于一些老版本浏览器需要进行兼容适配，具体写法可以看我的响应式开发篇。
+
+### table
+虽然目前表格布局已被大多数开发者列为淘汰方案，在此也有必要稍作了解。CSS 的 table 布局模仿了 HTML 中的 table 标签样式，通过行与列对内容进行分割排布，特别适合需要垂直居中的情况，同时它也是对低版本 IE 不支持 flex 布局的一个良好补充。
+
+#### 代码
+```html
+<div style="display: table; width: 100%;">
+  <div style="display: table-cell; width: 100px; background: #ffc4c4;">左</div>
+  <div style="display: table-cell; height: 150px; background: #c9ceff;">中</div>
+  <div style="display: table-cell; width: 100px; background: #ffffbc;">右</div>
+</div>
+```
+
+#### 效果
+<div style="display: table; width: 100%;"><div style="display: table-cell; width: 100px; background: #ffc4c4;">左</div><div style="display: table-cell; height: 150px; background: #c9ceff;">中</div><div style="display: table-cell; width: 100px; background: #ffffbc;">右</div></div>
+
+**注意**：这种写法同样可以满足高度自适应，需要注意的是 table 布局中的 table-cell，它们的高度与宽度实际都会表现为内容的宽高，因此对于本问题，父元素需要有一个宽度，否则中间部分的宽度只会适应内容。
+
+
+### grid
+网格布局是 CSS3 的新布局方案，它兼具 table 布局和 flex 布局的特点，对页面进行网格状分割排布，可以灵活的进行横向和纵向布局（可以实现类似于表格里合并单元格的功能）。
+
+#### 代码
+```html
+<div style="display: grid; grid-template-columns: 100px auto 100px; grid-template-rows: 150px;">
+  <div style="background: #ffc4c4;">左</div>
+  <div style="background: #c9ceff;">中</div>
+  <div style="background: #ffffbc;">右</div>
+</div>
+```
+
+#### 效果
+<div style="display: grid; grid-template-columns: 100px auto 100px; grid-template-rows: 150px;"><div style="background: #ffc4c4;">左</div><div style="background: #c9ceff;">中</div><div style="background: #ffffbc;">右</div></div>
+
+**注意**：同样满足高度自适应，但是目前 grid 布局的兼容性并不是很好，因此只能作为技术储备学习。
+
+## 总结
+
+以上就是 CSS 的五种布局方案，float 的兼容性、flex 的灵活性、table 的便捷性都是它们各自的优势所在，所以我们在进行页面布局时需要根据具体情况选择适合的布局方案。下一篇我将继续记录 CSS 学习笔记：盒模型。
+
+## 参考资料
+
+[慕课网课程](https://coding.imooc.com/class/129.html)
+
+[CSS浮动float详解](https://www.jianshu.com/p/07eb19957991)
+
+[CSS绝对定位absolute详解](https://www.jianshu.com/p/a3da5e27d22b)
+
+[css Table布局-display:table](http://www.css88.com/archives/6308)
+
+[CSS Grid布局：网格单元格布局](https://www.w3cplus.com/css3/line-base-placement-layout.html)
