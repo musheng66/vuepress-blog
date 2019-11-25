@@ -80,12 +80,12 @@ $ hexo deploy
 在我们的整个 hexo 项目中，**_config.yml** 是配置文件，我们可以在其中修改各种可配置的网站属性。现在我们需要将本地的 hexo 项目与 GitHub 上的 repository 进行关联。
 我们需要找到 _config.yml 中的 deploy 属性，将其设置如下：
 
-<pre>
+```
 deploy:
   type: git
   repository: https://github.com/musheng66/musheng66.github.io.git
   branch: master
-</pre>
+```
 
 **注意**：repository 属性需要填写**我们自己的 repository 对应的地址**。修改完成后，我们每次使用 deploy 命令即可发布新的博客。至此，使用 hexo + GitHub 搭建博客的简要过程就介绍完了。
 
@@ -116,14 +116,14 @@ deploy:
 
 这是 Material 主题使用说明中的一段，正因为它将 _config 配置文件改了名字，我们在 hexo g 时才会报类似这样的错：
 
-<pre>
+```
 Unhandled rejection TypeError: /Users/musheng/Projects/WebstormProjects/blog/themes/material/layout/post.ejs:44
     42|                 <!-- Post Comments -->
     43|                 <% if(page.comment !== false) { %>
  >> 44|                     <%- partial('_partial/comment') %>
     45|                 <% } %>
     45|                 <% } %>
-</pre>
+```
 
 所以对于这个问题，我们只需要**拷贝一份 _config.template.yml 并将其重命名为 _config.yml**就可以解决了。
 
@@ -134,24 +134,24 @@ Unhandled rejection TypeError: /Users/musheng/Projects/WebstormProjects/blog/the
 
 然后，我们需要在项目根目录下找到 _config.yml 文件，在里面添加：
 
-<pre>
+```
 # Native Search
 ## https://github.com/PaicHyperionDev/hexo-generator-search
 search:
     path: search.xml
     field: all
-</pre>
+```
 
 另外，因为 Material 主题的配置文件中对搜索可能也有配置，我们还需要找到主题中的配置，**修改 use 为 local** ：
 
-<pre>
+```
 # Search Systems
 # Available value:
 #     swiftype | google | local
 search:
     use: local
     swiftype_key:
-</pre>
+```
 
 
 ## 参考资料

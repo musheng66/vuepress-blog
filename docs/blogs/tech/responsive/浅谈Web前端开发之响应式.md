@@ -49,15 +49,15 @@ tags: 响应式开发
 
 目前比较流行的尺寸临界值有：
 
-<pre>
-1. 常用于图片流
+```css
+/* 1. 常用于图片流 */
 @media all and (max-width: 1690px) { ... }
 @media all and (max-width: 1280px) { ... }
 @media all and (max-width: 980px) { ... }
 @media all and (max-width: 736px) { ... }
 @media all and (max-width: 480px) { ... }
 
-2. 常用于稍微复杂的基本响应
+/* 2. 常用于稍微复杂的基本响应 */
 @media all and (min-width:1200px){ ... }
 @media all and (min-width: 960px) and (max-width: 1199px) { ... }
 @media all and (min-width: 768px) and (max-width: 959px) { ... }
@@ -65,23 +65,23 @@ tags: 响应式开发
 @media all and (max-width: 599px) { ... }
 @media all and (max-width: 479px) { ... }
 
-3. 基于Bootstrap 3.x 全球主流框架
+/* 3. 基于Bootstrap 3.x 全球主流框架 */
 @media all and (max-width: 991px) { ... }
 @media all and (max-width: 768px) { ... }
 @media all and (max-width: 480px) { ... }
 
-4. 基于Bootstrap 4.x 全球主流框架
+/* 4. 基于Bootstrap 4.x 全球主流框架 */
 @media (min-width: 576px) { ... }
 @media (min-width: 768px) { ... }
 @media (min-width: 992px) { ... }
 @media (min-width: 1200px) { ... }
 
-5. 常用于Retina屏幕图片适配(@2x)
+/* 5. 常用于Retina屏幕图片适配(@2x) */
 @media(-webkit-min-device-pixel-ratio:1.5){ ... }
 @media(min--moz-device-pixel-ratio:1.5){ ... }
 @media(-o-min-device-pixel-ratio:3/2){ ... }
 @media(min-resolution:1.5dppx){ ... }
-</pre>
+```
 
 ## 实现
 
@@ -139,7 +139,7 @@ tags: 响应式开发
 
 这是是将容器设定为 Flex 布局的写法，而对于不同浏览器的兼容性常常会使人头痛，所以我在查阅资料之后总结了一个比较稳妥的写法，列在此处：
 
-<pre>
+```css
 .box {
     display: -webkit-box;  /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
     display: -moz-box;     /* 老版本语法: Firefox (buggy) */
@@ -147,7 +147,7 @@ tags: 响应式开发
     display: -webkit-flex; /* 新版本语法: Chrome 21+ */
     display: flex;         /* 新版本语法: Opera 12.1, Firefox 22+ */
 }
-</pre>
+```
 
 ##### flex-direction
 

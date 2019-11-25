@@ -8,22 +8,6 @@ module.exports = {
     sidebar: {
       '/blogs/tech/': [
         {
-          title:'CSS',
-          collapsable: true,
-          children:[
-            '/blogs/tech/css/CSS笔记：页面布局',
-            '/blogs/tech/css/CSS笔记：盒模型与 BFC',
-          ]
-        },
-        {
-          title:'JavaScript',
-          collapsable: true,
-          children:[
-            '/blogs/tech/js/使用hexo搭建自己的博客 - 快速开始',
-            '/blogs/tech/js/JavaScript 中的 HTTP 跨域请求',
-          ]
-        },
-        {
           title:'响应式设计',
           collapsable: true,
           children:[
@@ -34,7 +18,23 @@ module.exports = {
           title:'Vue',
           collapsable: true,
           children:[
-            '/blogs/tech/vue/vue-cli踩坑记录',
+            '/blogs/tech/vue/vue-designer',
+          ]
+        },
+        {
+          title:'CSS',
+          collapsable: true,
+          children:[
+            '/blogs/tech/css/笔记：页面布局',
+            '/blogs/tech/css/笔记：盒模型与 BFC',
+          ]
+        },
+        {
+          title:'JavaScript',
+          collapsable: true,
+          children:[
+            '/blogs/tech/js/使用hexo搭建自己的博客 - 快速开始',
+            '/blogs/tech/js/转载：JavaScript 中的 HTTP 跨域请求',
           ]
         },
       ],
@@ -66,7 +66,7 @@ module.exports = {
       { text: '技术', link: '/blogs/tech/' },
       { text: '原创', link: '/blogs/article/' },
       { text: '随笔', link: '/blogs/note/' },
-      { text: 'Github', link: 'https://github.com/musheng66/vuepress-blog' },
+      { text: 'Github', link: 'https://github.com/musheng66' },
       // 下拉列表的配置
       // {
       //   text: 'Languages',

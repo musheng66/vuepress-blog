@@ -1,5 +1,5 @@
 ---
-title: 转载——JavaScript 中的 HTTP 跨域请求
+title: 转载：JavaScript 中的 HTTP 跨域请求
 date: 2017-12-26 14:37:09
 tags: 跨域
 ---
@@ -67,7 +67,7 @@ CORS 本质上是规定了一系列的 HTTP 头来作为判断脚本是否能够
 
 OPTIONS 请求会将当前的跨域请求所使用的特殊 HTTP 请求头和 HTTP 请求方法发送给服务器端，如 Access-Control-Request-Method 和 Access-Control-Request-Headers 。服务器端接收到 OPTIONS 请求后返回相应的响应头。浏览器根据返回的响应头再来判断该跨域请求是否被允许的。当浏览器判定 OPTIONS 请求通过了，真正的请求才会发出。如以下则是一个带有 OPTIONS 请求以及真正的 GET 请求的响应头和请求头：
 
-<pre>
+```
 OPTIONS /api4 HTTP/1.1
 Host: us1.serenader.me:3333
 Connection: keep-alive
@@ -80,9 +80,9 @@ Accept: */*
 Referer: http://us1.serenader.me:3334/
 Accept-Encoding: gzip, deflate, sdch
 Accept-Language: zh-CN,zh;q=0.8,en;q=0.6,zh-TW;q=0.4,fr;q=0.2
-</pre>
+```
 
-<pre>
+```
 HTTP/1.1 200 OK
 X-Powered-By: Express
 Access-Control-Allow-Origin: *
@@ -104,9 +104,9 @@ Accept: */*
 Referer: http://us1.serenader.me:3334/
 Accept-Encoding: gzip, deflate, sdch
 Accept-Language: zh-CN,zh;q=0.8,en;q=0.6,zh-TW;q=0.4,fr;q=0.2
-</pre>
+```
 
-<pre>
+```
 HTTP/1.1 200 OK
 X-Powered-By: Express
 Access-Control-Allow-Origin: *
@@ -115,7 +115,7 @@ Content-Length: 2
 ETag: W/"2-REvLOj/Pg4kpbElGfyfh1g"
 Date: Thu, 19 Jan 2017 15:21:15 GMT
 Connection: keep-alive
-</pre>
+```
 
 了解了简单跨域请求以及会发出 `preflight` 请求的非简单跨域请求之后，我们再来看看究竟是哪些 HTTP 头在决定这些跨域请求的「宿命」。
 
@@ -142,7 +142,7 @@ Connection: keep-alive
 
 只有配置了正确的 Access-Control-Allow-Origin 响应头请求才能够正常接收到响应，如 [demo-2](http://us1.serenader.me:3334/#no2)，此时的请求头和响应头为：
 
-<pre>
+```
 GET /api2 HTTP/1.1
 Host: us1.serenader.me:3333
 Connection: keep-alive
@@ -154,9 +154,9 @@ Accept: */*
 Referer: http://us1.serenader.me:3334/
 Accept-Encoding: gzip, deflate, sdch
 Accept-Language: zh-CN,zh;q=0.8,en;q=0.6,zh-TW;q=0.4,fr;q=0.2
-</pre>
+```
 
-<pre>
+```
 HTTP/1.1 200 OK
 X-Powered-By: Express
 Access-Control-Allow-Origin: *
@@ -165,7 +165,7 @@ Content-Length: 2
 ETag: W/"2-REvLOj/Pg4kpbElGfyfh1g"
 Date: Thu, 19 Jan 2017 15:03:33 GMT
 Connection: keep-alive
-</pre>
+```
 
 对于简单的跨域请求来说，通常只需要通过 `Access-Control-Allow-Origin` 这个响应头则可以请求成功（带 cookie 等情况先不考虑，会在下面讨论）。而当请求不是简单的跨域请求，情况就比较复杂。
 

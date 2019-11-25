@@ -8,7 +8,7 @@
     "docs:build": "vuepress build docs"
   },
   "devDependencies": {
-    "vuepress": "^0.14.10"
+    "vuepress": "^1.2.0"
   },
   "repository": {
     "type": "git",
@@ -19,8 +19,5 @@
   "bugs": {
     "url": "https://github.com/musheng66/vuepress-blog/issues"
   },
-  "homepage": "https://github.com/musheng66/vuepress-blog#readme",
-  "dependencies": {
-    "webpack-dev-middleware": "^3.6.0"
-  }
+  "homepage": "https://github.com/musheng66/vuepress-blog#readme"
 }
