@@ -37,6 +37,13 @@ module.exports = {
             '/blogs/tech/js/转载：JavaScript 中的 HTTP 跨域请求',
           ]
         },
+        {
+          title:'单点登录',
+          collapsable: true,
+          children:[
+            '/blogs/tech/sso/CAS认证前后端分离单点登录调研'
+          ]
+        },
       ],
       '/blogs/article/': [
         {
@@ -57,6 +64,7 @@ module.exports = {
           children:[
             '/blogs/note/你好，世界',
             '/blogs/note/2017年度个人工作总结',
+            '/blogs/note/2019年度个人工作总结',
           ]
         },
       ]
