@@ -1,6 +1,6 @@
 module.exports = {
   title: '沐圣阁',
-  description: '沐圣的博客站',
+  description: '沐圣的小站',
   head: [
     ['link', { rel: 'icon', href: `/favicon.ico` }],
   ],
