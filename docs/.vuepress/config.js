@@ -9,6 +9,10 @@ module.exports = {
     type: 'blog',
     // 备案号
     record: '京ICP备19057357号-1',
+    // 项目开始时间，只填写年份
+    startYear: '2017',
+    // author
+    author: '沐圣',
     // 博客配置
     blogConfig: {
       category: {
@@ -100,4 +104,4 @@ module.exports = {
       // }
     ]
   }
-};
+}
