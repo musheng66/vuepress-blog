@@ -4,7 +4,22 @@ module.exports = {
   head: [
     ['link', { rel: 'icon', href: `/favicon.ico` }],
   ],
+  theme: 'reco',
   themeConfig: {
+    type: 'blog',
+    // 备案号
+    record: '京ICP备19057357号-1',
+    // 博客配置
+    blogConfig: {
+      category: {
+        location: 2,     // 在导航栏菜单中所占的位置，默认2
+        text: '分类' // 默认文案 “分类”
+      },
+      tag: {
+        location: 3,     // 在导航栏菜单中所占的位置，默认3
+        text: '标签'      // 默认文案 “标签”
+      }
+    },
     sidebar: {
       '/blogs/tech/': [
         {
@@ -70,11 +85,11 @@ module.exports = {
       ]
     },
     nav: [
-      { text: '主页', link: '/' },
-      { text: '技术', link: '/blogs/tech/' },
-      { text: '原创', link: '/blogs/article/' },
-      { text: '随笔', link: '/blogs/note/' },
-      { text: 'Github', link: 'https://github.com/musheng66' },
+      { text: '主页', icon: 'reco-home', link: '/' },
+      { text: '技术', icon: 'reco-api', link: '/blogs/tech/' },
+      { text: '原创', icon: 'reco-document', link: '/blogs/article/' },
+      { text: '随笔', icon: 'reco-suggestion', link: '/blogs/note/' },
+      // { text: 'Github', link: 'https://github.com/musheng66' },
       // 下拉列表的配置
       // {
       //   text: 'Languages',

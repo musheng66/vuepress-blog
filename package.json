@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/musheng66/vuepress-blog/issues"
   },
-  "homepage": "https://github.com/musheng66/vuepress-blog#readme"
+  "homepage": "https://github.com/musheng66/vuepress-blog#readme",
+  "dependencies": {
+    "vuepress-theme-reco": "^1.1.4"
+  }
 }

@@ -1,7 +1,10 @@
 ---
 title: vue-designer
-date: 2019-12-08 00:00:00
-tags: vue
+date: 2019-12-08
+categories:
+ - 前端
+tags:
+ - vue
 ---
 自己的项目 vue-designer （在线预览建设中）相关情况，记录在此以备查阅。
 <!-- more -->

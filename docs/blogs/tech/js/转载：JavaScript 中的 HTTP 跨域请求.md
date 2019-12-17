@@ -1,7 +1,10 @@
 ---
 title: 转载：JavaScript 中的 HTTP 跨域请求
-date: 2017-12-26 14:37:09
-tags: 跨域
+date: 2017-12-26
+categories:
+ - 前端
+tags:
+ - 跨域
 ---
 为方便查阅，转载一篇关于 HTTP 跨域请求的文章。
 <!-- more -->

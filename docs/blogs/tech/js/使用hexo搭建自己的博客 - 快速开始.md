@@ -1,7 +1,10 @@
 ---
 title: 使用hexo搭建自己的博客 - 快速开始
-date: 2017-12-18 15:00:09
-tags: hexo
+date: 2017-12-18
+categories:
+ - 前端
+tags:
+ - hexo
 ---
 工欲善其事，必先利其器。下面要开始用 [Hexo](https://hexo.io/) + [GitHub](https://github.com/) 搭建自己的博客了。需要注意的是，网上的资料有一些已经过时，而现在的这篇文章也可能在以后过时，所以只将目前我搭建 hexo 博客站的经验总结如下。
 
