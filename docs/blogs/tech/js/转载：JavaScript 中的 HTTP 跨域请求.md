@@ -137,11 +137,11 @@ Connection: keep-alive
 如果其值是带有通配符的域名，如 `*.example.com` ，那么则允许该域名以及该域名的子域名进行跨域。
 具体可以观看 demo，[demo-0](http://us1.serenader.me:3334/#no0) 展示了当脚本请求没有配置跨域头的接口时，请求被浏览器拦截了的情况：
 
-<img src="/img/webfe/cors/cors01.jpg">
+<img :src="$withBase('/img/webfe/cors/cors01.jpg')">
 
 [demo-1](http://us1.serenader.me:3334/#no1) 则展示了接口有配置 Access-Control-Allow-Origin 响应头，但是并非脚本请求的域名，此时浏览器会报这种错：
 
-<img src="/img/webfe/cors/cors02.jpg">
+<img :src="$withBase('/img/webfe/cors/cors02.jpg')">
 
 只有配置了正确的 Access-Control-Allow-Origin 响应头请求才能够正常接收到响应，如 [demo-2](http://us1.serenader.me:3334/#no2)，此时的请求头和响应头为：
 
@@ -178,7 +178,7 @@ Connection: keep-alive
 
 当请求设置了一个特殊的请求头而且所请求的接口并没有配置 `Access-Control-Allow-Headers` 响应头时，会报如下错误，如 [demo-3](http://us1.serenader.me:3334/#no3) 所示：
 
-<img src="/img/webfe/cors/cors03.jpg">
+<img :src="$withBase('/img/webfe/cors/cors03.jpg')">
 
 上面的截图展示了请求附带了一个 `X-Custom-Header` 的请求头，但是请求在 preflight 阶段就失败了，如果要让请求成功完成的话，则必须在 OPTIONS 请求的响应里面配上 `Access-Control-Allow-Headers: X-Custom-Header`。
 
@@ -186,7 +186,7 @@ Connection: keep-alive
 
 与上一个 HTTP 头相似，`Access-Control-Allow-Methods` 告诉浏览器当前接口允许使用哪些 HTTP 方法去请求它。这个 HTTP 头通常也是在 OPTIONS 请求的响应头中才有意义。当没有通过这个响应头时，会报这样的错误：
 
-<img src="/img/webfe/cors/cors04.jpg">
+<img :src="$withBase('/img/webfe/cors/cors04.jpg')">
 
 同样的，上面的截图在 preflight 阶段就失败了。如果要让请求成功执行的话，那么需要配置响应头为：`Access-Control-Allow-Methods: GET,POST,PUT`。
 
@@ -217,13 +217,13 @@ Connection: keep-alive
 
 `Access-Control-Allow-Credentials` 这个响应头则是表明了当前请求的资源是否允许附带身份凭证。当其值为 true 时请求才成功，否则会失败，失败内容如下：
 
-<img src="/img/webfe/cors/cors05.jpg">
+<img :src="$withBase('/img/webfe/cors/cors05.jpg')">
 
 可以参考 demo-7观看请求头以及响应头。
 
 另外，**一旦开启了 `withCredentials` 选项，服务器端的 `Access-Control-Allow-Origin` 响应头就不能是通配符，只能是固定的一个域名，否则会请求失败。**具体错误内容为：
 
-<img src="/img/webfe/cors/cors06.jpg">
+<img :src="$withBase('/img/webfe/cors/cors06.jpg')">
 
 [demo-8](http://us1.serenader.me:3334/#no8) 和 [demo-9](http://us1.serenader.me:3334/#no9) 分别演示了当请求带上 cookie 时，响应头配置为通配符的情况以及响应头有正确配置为具体域名的情况。
 

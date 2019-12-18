@@ -2,7 +2,7 @@
 home: true
 heroImage: /img/banner.JPG
 bgImage: '/img/banner.JPG'
-faceImage: '/favicon.ico'
+faceImage: '/img/logo.jpg'
 isShowTitleInHome: false
 heroImageStyle: {
   maxHeight: '200px',

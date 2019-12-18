@@ -2,17 +2,19 @@ module.exports = {
   title: '沐圣阁',
   description: '沐圣的小站',
   head: [
-    ['link', { rel: 'icon', href: `/favicon.ico` }],
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }]
   ],
   theme: 'reco',
   themeConfig: {
     type: 'blog',
     // 备案号
-    record: '京ICP备19057357号-1',
+    record: '京ICP备19057357号-1 京公网安备11011202002027号',
     // 项目开始时间，只填写年份
     startYear: '2017',
     // author
     author: '沐圣',
+    logo: '/img/logo.jpg',
     // 博客配置
     blogConfig: {
       category: {
@@ -90,6 +92,7 @@ module.exports = {
     },
     nav: [
       { text: '主页', icon: 'reco-home', link: '/' },
+      { text: '时间轴', icon: 'reco-date', link: '/timeLine/' },
       { text: '技术', icon: 'reco-api', link: '/blogs/tech/' },
       { text: '原创', icon: 'reco-document', link: '/blogs/article/' },
       { text: '随笔', icon: 'reco-suggestion', link: '/blogs/note/' },

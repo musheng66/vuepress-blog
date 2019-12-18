@@ -6,7 +6,7 @@ categories:
 tags:
  - vue
 ---
-自己的项目 vue-designer （在线预览建设中）相关情况，记录在此以备查阅。
+自己的项目 vue-designer （[在线预览](http://www.musheng.art/vue-designer)）相关情况，记录在此以备查阅。
 <!-- more -->
 ## 闲谈
 最近一段时间根据之前做过的一个项目，自己开发了一个新的原型项目，暂且命名为 vue-designer 吧。
