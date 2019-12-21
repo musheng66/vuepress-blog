@@ -15,6 +15,17 @@ module.exports = {
     // author
     author: '沐圣',
     logo: '/img/logo.jpg',
+    // valineConfig: {
+    //   appId: '0pzYxgDh5fcO9uCYeLNH0R05-gzGzoHsz',
+    //   appKey: 'dtbEVM29neLqhnOFncrphKoz'
+    // },
+    vssueConfig: {
+      platform: 'github',
+      owner: 'musheng66',
+      repo: 'vuepress-blog',
+      clientId: '0a423a5ed3c5ee5793ca',
+      clientSecret: '7d5cb0a0ac474e56a4ce5c8037fb3ff3039e5122',
+    },
     // 博客配置
     blogConfig: {
       category: {
