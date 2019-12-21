@@ -1,6 +1,8 @@
 ---
 title: 原创
 
+isShowComments: false
+
 ---
 
 早年的一些创作。

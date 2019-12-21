@@ -1,6 +1,8 @@
 ---
 title: 随笔
 
+isShowComments: false
+
 ---
 
 一些生活中的琐事闲谈。

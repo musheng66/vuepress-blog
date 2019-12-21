@@ -1,6 +1,8 @@
 ---
 title: 前端
 
+isShowComments: false
+
 ---
 
 个人总结的前端技术文章。
