@@ -1,6 +1,6 @@
 ---
 title: CAS认证前后端分离单点登录调研
-date: 2019-12-09
+date: 2020-01-03
 categories:
  - 前端
 tags:
@@ -132,8 +132,6 @@ router.beforeEach((to, from, next) => {
 9. Client2 根据 url 跳转回前端 B，并在地址栏增加 JSESSIONID 参数
 10. 前端 B 接收 JSESSIONID 并存放在 B 域的 cookie 中，后续请求均携带 cookie
 
-至此就基本实现了多个子系统之间的单点登录流程。
-
 ## 实施
 在开发过程中也存在一些具体的坑，此处只记录遇到并解决的坑以及留下的坑。
 ### 遇到的问题
@@ -148,22 +146,17 @@ axios.defaults.withCredentials = true
 #### 多个窗口访问不同子系统
 对于同一个平台下的多个子系统，如果都采用前后端分离的方式，打通了 Client1 的登录认证之后，如何让 Client2 不需要登录直接访问呢？
 
-此处可以有这样一种解决办法，当 Client1 登录后，CAS Server 已经存放了票据的情况下，打开 Client2 的前端页面时可以首先调用一次获取用户信息的接口，这样就会让 Client2 也执行一次认证过程。如此一来，用户不会察觉到这个过程，只会看到认证成功后要访问的页面，即可实现一次登录访问多个子系统的需求。
+此处常见的解决办法之一是前端通过 iframe 手动将 JSESSIONID 写入每个子系统域下的 cookie 中。子系统每次调用接口时只需将自己保存的 JSESSIONID 带上，即可保证认证通过。
 
-### 存在的缺陷
-#### 单点登出
-由于之前手动保存的 JSESSIONID 可能是 Client 第一次建立的会话 ID，而非认证的会话 ID，故调用 CAS Server 的 /logout 退出时发现只能退出当前子系统，而不能实现单点退出，其余页面子系统仍可正常使用。
-
-#### 前端只能访问单一的 CAS Client
+## 存在的缺陷
+### 前端只能访问单一的 CAS Client
 由于采用了会话机制，目前实现的版本一个前端只能访问对应的一个 CAS Client 资源，对于在同一个前端访问微服务架构多个服务的情况尚未有解决方案。因此只能设计成每个前端访问自己对应的后端。
 
 ## 总结
-这是最近一段时期以来最棘手的一个问题，经过和同事的通力合作，设计实施以及开发 Demo，最终方案虽然还存在一些交互上的缺陷，但流程已经跑通，还算比较满意吧。
-
-下一步打算使用 CAS 提供的 REST  接口认证方式进行调研，争取可以设计实现完善的前后端分离模式单点登录/登出解决方案。
+通过此次调研，基本可以认为基于 CAS 的单点登录认证不适用于前后端分离架构，因为基于会话的单点登录对前后端分离架构天生不友好。大部分前后端分离架构最终实现单点登录都是通过共享 session，这在严格意义上说或许不能算是完善的单点登录解决方案。
 
 ## 参考资料
-### CAS 原理
+### CAS原理
 - [cas单点登录认证原理](https://www.cnblogs.com/tudou1223/p/9018423.html)
 - [cas登录认证](https://www.jianshu.com/p/8daeb20abb84)
 - [CAS单点登录(十一)——单点退出](https://blog.csdn.net/Anumbrella/article/details/89069445)
@@ -172,8 +165,13 @@ axios.defaults.withCredentials = true
 ### 前后端分离
 - [前后端分离架构概述](https://blog.csdn.net/fuzhongmin05/article/details/81591072)
 - [前后端分离或AJAX下的CAS-SSO跨域流程分析](https://blog.csdn.net/qq_26769513/article/details/102835031)
+- [前后端分离的项目集成CAS](https://blog.csdn.net/qq_21251983/article/details/87631991)
 
 ### CAS Restful
 - [REST Protocol](https://apereo.github.io/cas/6.1.x/protocol/REST-Protocol.html)
 - [使用Apereo Cas 5.1.3的Restful接口实现SSO及TGC分析](https://blog.csdn.net/cn_yh/article/details/77962467)
 - [CAS之5.2x版本之REST验证ticket（跨系统访问资源）](https://blog.csdn.net/yelllowcong/article/details/79290916)
+
+### OAuth
+- [OAuth 2.0 的一个简单解释](http://www.ruanyifeng.com/blog/2019/04/oauth_design.html)
+- [OAuth 2.0 的四种方式](http://www.ruanyifeng.com/blog/2019/04/oauth-grant-types.html)
