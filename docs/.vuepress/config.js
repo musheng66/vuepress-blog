@@ -82,12 +82,41 @@ module.exports = {
           title:'原创',
           collapsable: false,
           children:[
-            '/blogs/article/阁主寄语',
-            '/blogs/article/高中时期旧作遴选',
-            '/blogs/article/大学时期旧作遴选',
-            '/blogs/article/壹本时期旧作遴选',
+            '/blogs/article/阁主寄语'
           ]
         },
+        {
+          title:'壹本时期旧作',
+          collapsable: false,
+          children:[
+            '/blogs/article/eben/丙申初雨',
+            '/blogs/article/eben/乙未年十月初十逢雪',
+            '/blogs/article/eben/壹本时期旧作遴选',
+          ]
+        },
+        {
+          title:'大学时期旧作',
+          collapsable: false,
+          children:[
+            '/blogs/article/daxue/西风飘雪',
+            '/blogs/article/daxue/清秋',
+            '/blogs/article/daxue/晚秋',
+            '/blogs/article/daxue/又逢夏雨',
+            '/blogs/article/daxue/上元雪',
+            '/blogs/article/daxue/白石游记',
+            '/blogs/article/daxue/秋寄二首',
+            '/blogs/article/daxue/潞园离思',
+            '/blogs/article/daxue/月夜',
+            '/blogs/article/daxue/大学时期旧作遴选',
+          ]
+        },
+        {
+          title:'高中时期旧作',
+          collapsable: false,
+          children:[
+            '/blogs/article/gaozhong/高中时期旧作遴选',
+          ]
+        }
       ],
       '/blogs/note/': [
         {
