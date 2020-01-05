@@ -11,8 +11,23 @@ isShowComments: false
  * <router-link to="/blogs/article/阁主寄语">阁主寄语</router-link>
 
 ### 壹本时期旧作：
+ * <router-link to="/blogs/article/eben/吉祥如意">吉祥如意</router-link>
  * <router-link to="/blogs/article/eben/丙申初雨">丙申初雨</router-link>
  * <router-link to="/blogs/article/eben/乙未年十月初十逢雪">乙未年十月初十逢雪</router-link>
+ * <router-link to="/blogs/article/eben/未见初雪">未见初雪</router-link>
+ * <router-link to="/blogs/article/eben/繁花未竟">繁花未竟</router-link>
+ * <router-link to="/blogs/article/eben/塞外">塞外</router-link>
+ * <router-link to="/blogs/article/eben/云城">云城</router-link>
+ * <router-link to="/blogs/article/eben/平遥雨夜">平遥雨夜</router-link>
+ * <router-link to="/blogs/article/eben/雾灵山游记">雾灵山游记</router-link>
+ * <router-link to="/blogs/article/eben/雨虹">雨虹</router-link>
+ * <router-link to="/blogs/article/eben/惊雷">惊雷</router-link>
+ * <router-link to="/blogs/article/eben/又见暮雨">又见暮雨</router-link>
+ * <router-link to="/blogs/article/eben/秋赞">秋赞</router-link>
+ * <router-link to="/blogs/article/eben/张北草原游记">张北草原游记</router-link>
+ * <router-link to="/blogs/article/eben/雪落">雪落</router-link>
+ * <router-link to="/blogs/article/eben/东昌晚景">东昌晚景</router-link>
+ * <router-link to="/blogs/article/eben/雪尽">雪尽</router-link>
 
 > 封笔一年，未能尽余暇，识见诗词文字之妙，经史故事之情。当以来年后岁勤阅诗书史籍，间以行步山川万里，养淡泊宁静之性，或作新词，则可慰平生矣。
  

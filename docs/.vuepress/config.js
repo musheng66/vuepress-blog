@@ -89,9 +89,24 @@ module.exports = {
           title:'壹本时期旧作',
           collapsable: false,
           children:[
+            '/blogs/article/eben/吉祥如意',
             '/blogs/article/eben/丙申初雨',
             '/blogs/article/eben/乙未年十月初十逢雪',
-            '/blogs/article/eben/壹本时期旧作遴选',
+            '/blogs/article/eben/未见初雪',
+            '/blogs/article/eben/繁花未竟',
+            '/blogs/article/eben/塞外',
+            '/blogs/article/eben/云城',
+            '/blogs/article/eben/平遥雨夜',
+            '/blogs/article/eben/雾灵山游记',
+            '/blogs/article/eben/雨虹',
+            '/blogs/article/eben/惊雷',
+            '/blogs/article/eben/又见暮雨',
+            '/blogs/article/eben/秋赞',
+            '/blogs/article/eben/张北草原游记',
+            '/blogs/article/eben/雪落',
+            '/blogs/article/eben/东昌晚景',
+            '/blogs/article/eben/雪尽',
+            // '/blogs/article/eben/壹本时期旧作遴选',
           ]
         },
         {
@@ -107,7 +122,7 @@ module.exports = {
             '/blogs/article/daxue/秋寄二首',
             '/blogs/article/daxue/潞园离思',
             '/blogs/article/daxue/月夜',
-            '/blogs/article/daxue/大学时期旧作遴选',
+            // '/blogs/article/daxue/大学时期旧作遴选',
           ]
         },
         {
