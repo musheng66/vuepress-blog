@@ -34,15 +34,32 @@ isShowComments: false
 ### 大学时期旧作：
  * <router-link to="/blogs/article/daxue/西风飘雪">西风飘雪</router-link>
  * <router-link to="/blogs/article/daxue/清秋">清秋</router-link>
+ * <router-link to="/blogs/article/daxue/又见夏雨">又见夏雨</router-link>
+ * <router-link to="/blogs/article/daxue/暮雨">暮雨</router-link>
+ * <router-link to="/blogs/article/daxue/清明闲赋二首">清明闲赋二首</router-link>
  * <router-link to="/blogs/article/daxue/晚秋">晚秋</router-link>
+ * <router-link to="/blogs/article/daxue/月夜">月夜</router-link>
  * <router-link to="/blogs/article/daxue/又逢夏雨">又逢夏雨</router-link>
  * <router-link to="/blogs/article/daxue/上元雪">上元雪</router-link>
+ * <router-link to="/blogs/article/daxue/元旦">元旦</router-link>
  * <router-link to="/blogs/article/daxue/白石游记">白石游记</router-link>
  * <router-link to="/blogs/article/daxue/秋寄二首">秋寄二首</router-link>
+ * <router-link to="/blogs/article/daxue/苦夏">苦夏</router-link>
  * <router-link to="/blogs/article/daxue/潞园离思">潞园离思</router-link>
- * <router-link to="/blogs/article/daxue/月夜">月夜</router-link>
+ * <router-link to="/blogs/article/daxue/月夜思">月夜思</router-link>
 
 > 大学四年，所作多为咏一时之景，少有叙事议事者。盖因大学所遇并无新奇鬼怪，况彼时心性沉寂，凡事浅尝辄止，消极而避事，今日想来，或有光阴虚渡之感。所幸灵感未失，尚能由观景而生，借以入词句，得一时之乐。
 
 ### 高中时期旧作：
- * <router-link to="/blogs/article/gaozhong/高中时期旧作遴选">高中时期旧作遴选</router-link>
+ * <router-link to="/blogs/article/gaozhong/午后观雨">午后观雨</router-link>
+ * <router-link to="/blogs/article/gaozhong/夜雨">夜雨</router-link>
+ * <router-link to="/blogs/article/gaozhong/夏雨">夏雨</router-link>
+ * <router-link to="/blogs/article/gaozhong/春雨">春雨</router-link>
+ * <router-link to="/blogs/article/gaozhong/漫步">漫步</router-link>
+ * <router-link to="/blogs/article/gaozhong/西风">西风</router-link>
+ * <router-link to="/blogs/article/gaozhong/满江红·贺校庆">满江红·贺校庆</router-link>
+ * <router-link to="/blogs/article/gaozhong/记梦">记梦</router-link>
+ * <router-link to="/blogs/article/gaozhong/念奴娇·潞园金秋">念奴娇·潞园金秋</router-link>
+ * <router-link to="/blogs/article/gaozhong/沁园春·潞河游">沁园春·潞河游</router-link>
+
+> 初学，所作多天马行空，多有文不达意者。

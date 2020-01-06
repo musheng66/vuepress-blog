@@ -87,7 +87,7 @@ module.exports = {
         },
         {
           title:'壹本时期旧作',
-          collapsable: false,
+          collapsable: true,
           children:[
             '/blogs/article/eben/吉祥如意',
             '/blogs/article/eben/丙申初雨',
@@ -111,32 +111,48 @@ module.exports = {
         },
         {
           title:'大学时期旧作',
-          collapsable: false,
+          collapsable: true,
           children:[
             '/blogs/article/daxue/西风飘雪',
             '/blogs/article/daxue/清秋',
+            '/blogs/article/daxue/又见夏雨',
+            '/blogs/article/daxue/暮雨',
+            '/blogs/article/daxue/清明闲赋二首',
             '/blogs/article/daxue/晚秋',
+            '/blogs/article/daxue/月夜',
             '/blogs/article/daxue/又逢夏雨',
             '/blogs/article/daxue/上元雪',
+            '/blogs/article/daxue/元旦',
             '/blogs/article/daxue/白石游记',
             '/blogs/article/daxue/秋寄二首',
+            '/blogs/article/daxue/苦夏',
             '/blogs/article/daxue/潞园离思',
-            '/blogs/article/daxue/月夜',
+            '/blogs/article/daxue/月夜思',
             // '/blogs/article/daxue/大学时期旧作遴选',
           ]
         },
         {
           title:'高中时期旧作',
-          collapsable: false,
+          collapsable: true,
           children:[
-            '/blogs/article/gaozhong/高中时期旧作遴选',
+            '/blogs/article/gaozhong/午后观雨',
+            '/blogs/article/gaozhong/夜雨',
+            '/blogs/article/gaozhong/夏雨',
+            '/blogs/article/gaozhong/春雨',
+            '/blogs/article/gaozhong/漫步',
+            '/blogs/article/gaozhong/西风',
+            '/blogs/article/gaozhong/满江红·贺校庆',
+            '/blogs/article/gaozhong/记梦',
+            '/blogs/article/gaozhong/念奴娇·潞园金秋',
+            '/blogs/article/gaozhong/沁园春·潞河游',
+            // '/blogs/article/gaozhong/高中时期旧作遴选',
           ]
         }
       ],
       '/blogs/note/': [
         {
           title:'随笔',
-          collapsable: false,
+          collapsable: true,
           children:[
             '/blogs/note/你好，世界',
             '/blogs/note/2017年度个人工作总结',
