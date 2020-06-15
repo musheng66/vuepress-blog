@@ -21,7 +21,8 @@ isShowComments: false
  * <router-link to="/blogs/tech/vue/vue-designer">vue-designer</router-link>
  
 ### 单点登录：
- * <router-link to="/blogs/tech/responsive/浅谈Web前端开发之响应式">浅谈Web前端开发之响应式</router-link>
+ * <router-link to="/blogs/tech/responsive/CAS认证前后端分离单点登录调研">CAS认证前后端分离单点登录调研</router-link>
+ * <router-link to="/blogs/tech/responsive/Vue + CAS Restful API前后端分离单点登录调研">Vue + CAS Restful API前后端分离单点登录调研</router-link>
   
 ### 博客建站：
  * <router-link to="/blogs/tech/js/使用hexo搭建自己的博客 - 快速开始">使用hexo搭建自己的博客 - 快速开始</router-link>

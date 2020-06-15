@@ -73,7 +73,8 @@ module.exports = {
           title:'单点登录',
           collapsable: true,
           children:[
-            '/blogs/tech/sso/CAS认证前后端分离单点登录调研'
+            '/blogs/tech/sso/CAS认证前后端分离单点登录调研',
+            '/blogs/tech/sso/Vue + CAS Restful API前后端分离单点登录调研'
           ]
         },
       ],
