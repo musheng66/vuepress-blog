@@ -24,11 +24,13 @@ tags:
 ### 单点登录
 单点登录（Single Sign On），简称为 SSO，是目前比较流行的企业业务整合的解决方案之一。SSO的定义是在多个应用系统中，用户只需要登录一次就可以访问所有相互信任的应用系统。
 
-### CAS
+### CAS认证
+
+此处借用了一张图来展示认证协议过程：
 
 <img src="/img/webfe/sso/sso1.png">
 
-此处借用了一张图来展示认证协议过程，下面介绍一下认证流程。常用的认证流程有两个：其一是用户登录，二是已登录用户访问客户端资源。
+下面介绍一下认证流程。常用的认证流程有两个：其一是用户登录，二是已登录用户访问客户端资源。
 
 #### 用户登录
 1. 用户通过浏览器发送请求访问 CAS Client 资源
@@ -65,6 +67,15 @@ TGT 封装了 Cookie 值以及此 Cookie 值对应的用户信息。用户在 CA
 服务票据，服务的惟一标识码 , 由 CAS Server 发出（ Http 传送），用户访问 Service 时，Service 发现用户没有 ST，则要求用户去 CAS 获取 ST。
 
 ## 存在的问题
+### XMLHttpRequest 请求与 302 状态码
+对于前后端分离架构常用的 XMLHttpRequest（Ajax、Axios 等库都是对它的封装） 请求方式来说，基于浏览器会话的传统项目常见的 302 状态码无疑是一道深坑。第一次见到那个跨域的错误时，我很诧异，以为是自己的代码写的有问题，直到我调试了全部代码之后，发现根本捕获不到 302 状态。
+
+后来我终于在[这里](https://stackoverflow.com/questions/15996779/cannot-handle-302-redirect-in-ajax-and-why/15996968#15996968)找到了原因：
+
+> You can't handle redirects with XHR callbacks because the browser takes care of them automatically. You will only get back what at the redirected location.
+
+浏览器会自动优先处理重定向请求，只会返回重定向地址给出的结果。这必然会导致 302 状态码无法返回前端被捕获，而是会被浏览器直接跳转，我们最终只能得到从当前地址访问重定向地址后可能产生的跨域错误。
+
 ### 四方认证与Ajax
 前文已经介绍了 CAS 认证的过程，可以看出一般 CAS 的认证都是基于会话（即浏览器与服务器之间的 Session），因此终端、CAS 客户端与 CAS 服务端会组成一个三方的认证系统。登录之后的浏览器会在 CAS Server 的域名下存放 cookie，用于浏览器和 CAS Server 之间验证是否登录；而在访问 CAS Client 资源时则会在 Client 的域名下存放一个 cookie，用于下次访问资源时调取 ST 与 CAS Server 进行验证。
 
@@ -76,15 +87,30 @@ TGT 封装了 Cookie 值以及此 Cookie 值对应的用户信息。用户在 CA
 
 ## 解决方案
 前面的问题网上出现了众多解决办法，在此处仅记录我自己实现的确实可行的一个设计方案。
+
+### 整体流程设计
+这里记录一下整体的设计流程：
+
+1. 浏览器访问子系统 A 前端页面，前端向 Client 获取用户信息
+2. Client 发现请求中没有会话ID，返回 401 及用于跳转页面的 Controller 的地址
+3. 前端发现 401，将浏览器重定向到 CAS Server 的登录页，后面带上 service 参数，service 即为 Client 回传的 Controller 地址，同时向其中传入一个 url 参数，用于返回前端页面
+4. CAS Server 登录，登录成功后根据 service 参数返回 Client 中的 Controller
+5. Client 接收 url 参数，同时将 JSESSIONID 拼在 url 最后，通过跳转回传给前端
+6. 前端接收 JSESSIONID 并存放在其自身域的 cookie 中，后续请求均携带 cookie
+7. 另一子系统 B 前端访问 Client2 时，Client2 发现无会话，同样返回 401
+8. 前端跳转 CAS Server 进行登录认证（携带 service 及 url 两个参数），CAS 发现已登录，直接跳转回到 service 中
+9. Client2 根据 url 跳转回前端 B，并在地址栏增加 JSESSIONID 参数
+10. 前端 B 接收 JSESSIONID 并存放在 B 域的 cookie 中，后续请求均携带 cookie
+
 ### 后端（CAS Client 客户端）
-#### 跳转页面的 Controller
+#### 1.跳转页面的 Controller
 首先后端需要增加一个专门用来跳转页面的 Controller，只需能实现根据传入的参数（要跳转的URL）跳转到对应的页面即可。这个跳转的作用主要在于认证通过后返回前端页面，并建立会话，同时需要将会话的 JSESSIONID 放在 URL 中。
 
-#### 重定向改为返回 JSON
+#### 2.重定向改为返回 JSON
 在尽量减少侵入的原则下，不对 CAS 本身的代码进行修改，而是在认证过滤之前增加一个自定义的过滤器，将原有的返回 302 重定向状态改为返回 JSON 数据。返回的数据应包括 CAS Client 中已定义的跳转 Controller 地址，用于认证通过后返回到跳转页面的方法并跳回前端页面。
 
 ### 前端
-#### 处理未登录状态码
+#### 1.处理未登录状态码
 前端可以封装一个发送请求并接收返回值的组件，用于拦截所有的返回结果。与后端约定判断返回的状态码，若需要跳转 CAS Server，则保存当前浏览器地址，向 CAS Server 发送 service 参数，其值为 Client 中跳转页面用的 Controller 地址并向其传入返回前端页面的参数：url。
 
 以 axios 封装的组件为例：
@@ -104,7 +130,8 @@ service.interceptors.response.use(
   }
 )
 ```
-#### 获取并保存 Client 返回的 JSESSIONID
+
+#### 2.获取并保存 Client 返回的 JSESSIONID
 登录认证成功后，Client 返回前端时在浏览器地址中会携带 JSESSIONID 参数，前端获取后需要手动存放在 cookie 中，下次请求 Client 资源时将自动携带，Client 获取到 JSESSIONID 后即可取得会话并进行认证。
 以 vue-router 的导航钩子为例：
 ```javascript
@@ -118,20 +145,6 @@ router.beforeEach((to, from, next) => {
   }
 })
 ```
-
-### 整体流程设计
-下面记录一下整体的设计流程：
-
-1. 浏览器访问子系统 A 前端页面，前端向 Client 获取用户信息
-2. Client 发现请求中没有会话ID，返回 401 及用于跳转页面的 Controller 的地址
-3. 前端发现 401，将浏览器重定向到 CAS Server 的登录页，后面带上 service 参数，service 即为 Client 回传的 Controller 地址，同时向其中传入一个 url 参数，用于返回前端页面
-4. CAS Server 登录，登录成功后根据 service 参数返回 Client 中的 Controller
-5. Client 接收 url 参数，同时将 JSESSIONID 拼在 url 最后，通过跳转回传给前端
-6. 前端接收 JSESSIONID 并存放在其自身域的 cookie 中，后续请求均携带 cookie
-7. 另一子系统 B 前端访问 Client2 时，Client2 发现无会话，同样返回 401
-8. 前端跳转 CAS Server 进行登录认证（携带 service 及 url 两个参数），CAS 发现已登录，直接跳转回到 service 中
-9. Client2 根据 url 跳转回前端 B，并在地址栏增加 JSESSIONID 参数
-10. 前端 B 接收 JSESSIONID 并存放在 B 域的 cookie 中，后续请求均携带 cookie
 
 ## 实施
 在开发过程中也存在一些具体的坑，此处只记录遇到并解决的坑以及留下的坑。
