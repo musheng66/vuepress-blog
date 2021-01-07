@@ -20,4 +20,5 @@ features:
   details: 生活随笔
 footer: 沐圣阁 | 2019 沐圣
 ---
-<!--<a style="position: absolute; padding: 8px; left: 0; right: 0; bottom: 0; text-align: center;" href="http://www.beian.miit.gov.cn/">京 ICP 备 19057357 号</a>-->
+<span style="display:block;text-align: center;"><i data-v-3f97ad01="" class="iconfont reco-beian"></i> 京公网安备 11011202002027 号</span>
+<a style="display:block;text-align:center;" href="https://beian.miit.gov.cn/"><i data-v-3f97ad01="" class="iconfont reco-beian"></i> 京ICP备19057357号-1</a>

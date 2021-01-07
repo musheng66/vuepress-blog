@@ -9,7 +9,7 @@ module.exports = {
   themeConfig: {
     type: 'blog',
     // 备案号
-    record: '京ICP备19057357号-1 京公网安备11011202002027号',
+    // record: '京ICP备19057357号-1 京公网安备11011202002027号',
     // 项目开始时间，只填写年份
     startYear: '2017',
     // author
