@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/musheng66/vuepress-blog#readme",
   "dependencies": {
-    "vuepress-theme-reco": "^1.1.4"
+    "vuepress-theme-reco": "^1.6.14"
   }
 }
